@@ -2,7 +2,7 @@
   <form class="login" [formGroup]="signUp">
     <section class="title">
       Hobeii's ID Card Maker
-      <h5 class="hint">Sign in with your registered credentials to begin</h5>
+      <h5 class="hint">Create an account to use this awesome platform !</h5>
     </section>
     <div class="login-group">
       <clr-input-container>
@@ -20,9 +20,9 @@
       <div class="error" [ngClass]="{'active': isError}" >
         Invalid user name or password
       </div>
-      <button type="submit" (click)="addNewUser()" class="btn btn-primary">CREATE ACCOUNT</button>
+      <button type="submit" (click)="addNewUser()" class="btn btn-primary" [disabled]="!signUp.valid" >CREATE ACCOUNT</button>
       <div class="lower_text">
-        <a >Already registered? Sign In</a>
+        <a [routerLink]="['../sign-in']">Already registered? Sign In</a>
       </div>
     </div>
   </form>

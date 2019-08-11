@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Validator} from '../../shared/util/validator';
 import {PreLoginService} from '../shared/services/pre-login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +12,7 @@ import {PreLoginService} from '../shared/services/pre-login.service';
 export class SignUpComponent implements OnInit {
   signUp: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private prelogin: PreLoginService) {
+  constructor(private formBuilder: FormBuilder, private prelogin: PreLoginService, private router: Router) {
   }
 
   ngOnInit() {
@@ -30,6 +31,8 @@ export class SignUpComponent implements OnInit {
   addNewUser() {
       this.prelogin.addUser(this.signUp.value);
       this.signUp.reset();
+      this.router.navigate(['landing/sign-in']);
+
   }
 
 }

@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {PostLoginService} from '../shared/services/post-login.service';
 import {IdCardPreviewService} from '../shared/services/id-card-preview.service';
 import {LiveTableService} from '../shared/services/live-table.service';
+import {ClrLoadingState} from '@clr/angular';
 
 @Component({
   selector: 'app-add-id-card',
@@ -12,6 +13,8 @@ import {LiveTableService} from '../shared/services/live-table.service';
 })
 export class AddIdCardComponent implements OnInit {
   addIdCardForm: FormGroup;
+  validateBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
+
 
 
   constructor(private formBuilder: FormBuilder, private postLogin: PostLoginService,
@@ -32,8 +35,12 @@ export class AddIdCardComponent implements OnInit {
   }
 
   addId() {
+    this.validateBtnState = ClrLoadingState.LOADING;
     this.postLogin.addCard(this.addIdCardForm.value);
     this.addIdCardForm.reset();
+    this.cardPreview.clearPreview();
+    this.validateBtnState = ClrLoadingState.SUCCESS;
+
   }
 
   sendPreviewDetails(): void {

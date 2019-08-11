@@ -1,26 +1,62 @@
-<table class="zui-table">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Blood Group</th>
-    <th>Location</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let cards of cardsArray">
-    <td>{{cards.fullname}}</td>
-    <td>{{cards.age}}</td>
-    <td>{{cards.bloodGroup}}</td>
-    <td>{{cards.location}}</td>
-    <td>
-      <button (click)="removeCard(cards.id)">Delete</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
 
+<clr-datagrid >
+  <clr-dg-column>ID</clr-dg-column>
+  <clr-dg-column>Full Name</clr-dg-column>
+  <clr-dg-column>Age</clr-dg-column>
+  <clr-dg-column>Blood Group</clr-dg-column>
+  <clr-dg-column>Location</clr-dg-column>
+  <clr-dg-column>Actions</clr-dg-column>
 
-<br>
-{{cardsArray.length}}
+  <clr-dg-row *ngFor="let card of cardsArray">
+    <clr-dg-cell>{{card.id}}</clr-dg-cell>
+    <clr-dg-cell>{{card.fullname}}</clr-dg-cell>
+    <clr-dg-cell>{{card.age}}</clr-dg-cell>
+    <clr-dg-cell>{{card.bloodGroup }}</clr-dg-cell>
+    <clr-dg-cell>{{card.location}}</clr-dg-cell>
+    <clr-dg-cell>
+
+      <button type="button" (click)="previewModal(card)" class="btn btn-icon btn-primary" aria-label="view">
+        <clr-icon shape="eye"></clr-icon>
+      </button>
+      <button type="button" (click)="removeCard(card.id)" class="btn btn-icon btn-danger" aria-label="delete">
+        <clr-icon shape="times"></clr-icon>
+      </button>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{cardsArray.length}} registered cards</clr-dg-footer>
+</clr-datagrid>
+
+<clr-modal [(clrModalOpen)]="openModal" [clrModalClosable]="false">
+  <div class="modal-body">
+    <div class="card ">
+      <div class="card-header">
+        Live Preview
+      </div>
+      <div class="card-block">
+        <div class="card-media-block">
+          <img src="../../../assets/images/logo.png" class="card-media-image">
+          <div class="card-media-description" *ngIf="selectedCard">
+                        <span class="card-media-title">
+                            {{selectedCard.fullname}}
+                        </span>
+            <span class="card-media-title">
+                           Age: {{selectedCard.age}}
+                        </span>
+            <span class="card-media-title">
+                           Blood Group: {{selectedCard.bloodGroup}}
+                        </span>
+            <span class="card-media-text">
+                         Location:  {{selectedCard.location}}
+                        </span>
+          </div>
+        </div></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="closeModal()">
+      OK
+    </button>
+  </div>
+</clr-modal>
+

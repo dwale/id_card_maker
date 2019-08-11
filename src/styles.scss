@@ -9,9 +9,6 @@
   background: url(app/pre-login/shared/images/1500x500.jpg) black no-repeat ;
   background-size: cover;
 }
-//.login-wrapper .login {
-//  background: #f9b230;
-//}
 .btn-primary, .btn-primary:focus, .btn-primary:active {
   background: #f9b230!important;
   border: 1px #f9b230 solid!important;
@@ -35,3 +32,18 @@
 .input-group:focus{
   border-bottom: 1px solid #3c991e!important;
 }
+.page {
+  position: relative;
+}
+.pages {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+.main {
+  margin-top: 50px;
+}
+

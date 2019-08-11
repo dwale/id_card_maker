@@ -40,7 +40,9 @@ export class PostLoginService {
     this.addCardToStorage(cards);
     this.latestId ++;
   }
-
+  public getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem('Current User'));
+  }
   public removeCard(id) {
     const cards = this.getCards();
     cards.map((card) => {

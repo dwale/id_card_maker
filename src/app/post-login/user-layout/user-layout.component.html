@@ -1,4 +1,45 @@
-<app-add-id-card></app-add-id-card>
-<app-id-live-preview></app-id-live-preview>
-<br><br>
-<app-live-table></app-live-table>
+
+
+
+<header class="header-6">
+  <div class="branding">
+    <a  class="nav-link">
+      <clr-icon shape="vm-bug"></clr-icon>
+      <span class="title">Hobeei's ID Card Maker</span>
+    </a>
+  </div>
+  <div class="header-actions">
+    <clr-dropdown>
+      <button class="nav-text" clrDropdownTrigger>
+        {{currentUser.fullname}}
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <a (click)="logOut();" clrDropdownItem>Log out</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</header>
+
+<div class="clr-row clr-justify-content-center main">
+  <div class="clr-col-sm-12  clr-col-md-5">
+    <span>
+          <app-add-id-card></app-add-id-card>
+
+    </span>
+  </div>
+  <div class="clr-col-sm-12 clr-col-md-5">
+    <span>
+          <app-id-live-preview></app-id-live-preview>
+
+    </span>
+  </div>
+</div>
+<div class="clr-row clr-justify-content-center">
+  <div class="clr-col-sm-12 clr-col-md-8 ">
+    <span>
+      <app-live-table></app-live-table>
+  </span>
+  </div>
+
+</div>

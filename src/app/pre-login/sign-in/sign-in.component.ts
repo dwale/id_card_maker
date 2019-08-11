@@ -45,8 +45,6 @@ export class SignInComponent implements OnInit {
 
   logIn() {
     if (this.prelogin.validateLogin(this.signIn.value).length === 1) {
-
-      // this.router.navigate(['../../dashboard']);
       console.log('true');
     } else {
       this.isError = true;

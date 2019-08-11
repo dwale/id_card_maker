@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NewUser} from '../interfaces/new-user';
 import {UserLogin} from '../../../shared/interfaces/user-login';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class PreLoginService {
   private users: NewUser[];
   private latestId: number;
 
-  constructor() {
+  constructor(private router: Router) {
     const users = this.getUsers();
     if (users.length === 0) {
       this.latestId = 0;
@@ -40,9 +41,12 @@ export class PreLoginService {
   public validateLogin(userLogin: UserLogin) {
     const users = this.getUsers();
     console.log(userLogin.email, userLogin.password);
-    return users.filter(user =>
+    const validUser = users.filter(user =>
       user.email === userLogin.email && user.password === userLogin.password
     );
+    sessionStorage.setItem('Current User', JSON.stringify(validUser));
+    this.router.navigate(['../../../user']);
+    return validUser;
   }
 }
 

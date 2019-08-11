@@ -1,25 +1,24 @@
 <div class="login-wrapper">
   <form class="login" [formGroup]="signIn">
     <section class="title">
-      <h3 class="welcome">Welcome to</h3>
       Hobeii's ID Card Maker
       <h5 class="hint">Sign in with your registered credentials to begin</h5>
     </section>
     <div class="login-group">
       <clr-input-container>
         <label class="clr-sr-only">Email</label>
-        <input type="text" name="email" clrInput  formControlName="email"/>
+        <input type="text" name="email" clrInput  formControlName="email" autocomplete="off"/>
       </clr-input-container>
       <clr-password-container>
         <label class="clr-sr-only">Password</label>
-        <input type="password" name="password" clrPassword  formControlName="password"/>
+        <input type="password" name="password" clrPassword  formControlName="password" autocomplete="off"/>
       </clr-password-container>
       <div class="error" [ngClass]="{'active': isError}" [@enterAnimation]>
         Invalid user name or password
       </div>
       <button type="submit" (click)="logIn()" class="btn btn-primary">Login</button>
       <div class="lower_text">
-      <a >Sign up for a Company ID</a>
+      <a [routerLink]="['../sign-up']">Sign up for a Company ID</a>
       </div>
     </div>
   </form>

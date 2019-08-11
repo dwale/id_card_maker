@@ -1,15 +1,27 @@
-  <div class="id-card">
-    <div class="profile-row">
-      <div class="dp">
-        <div class="dp-arc-outer"></div>
-        <div class="dp-arc-inner"></div>
-        <img src="https://via.placeholder.com/420x420">
+<div class="clr-row">
+  <div class="clr-col-lg-10 clr-col-12 ">
+    <div class="card clickable">
+      <div class="card-header">
+       Live Preview
       </div>
-      <div class="desc" *ngIf="idDetails">
-        <h1>{{idDetails.fullname}}</h1>
-        <p>Age: {{idDetails.age}}</p>
-        <p>Blood Group: {{idDetails.bloodGroup}}</p>
-        <p>Location: {{idDetails.location}}</p>
+      <div class="card-block">
+        <div class="card-media-block">
+          <img src="../../../assets/images/logo.png" class="card-media-image">
+          <div class="card-media-description" *ngIf="idDetails">
+                        <span class="card-media-title">
+                           <h3> {{idDetails.fullname}} </h3>
+                        </span>
+                        <span class="card-media-title">
+                         <b>Age: </b> {{idDetails.age}}
+                        </span>
+                        <span class="card-media-title">
+                          <b> Blood Group:</b> {{idDetails.bloodGroup}}
+                        </span>
+            <span class="card-media-text">
+                         <b>Location:</b>  {{idDetails.location}}
+                        </span>
+          </div>
+        </div></div>
       </div>
     </div>
   </div>

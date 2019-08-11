@@ -1,24 +1,21 @@
-<div id="login-form-wrap">
-  <h2>Add ID card</h2>
-  <form [formGroup]="addIdCardForm">
-    <p>
-      <input type="text" formControlName="fullname" (keyup)="sendPreviewDetails()" name="fullname" placeholder="Full Name" >
-    </p>
-    <p>
-      <input type="text" formControlName="age" (keyup)="sendPreviewDetails()" name="age" placeholder="age" >
-    </p>
-    <p>
-      <input type="text" formControlName="bloodGroup" (keyup)="sendPreviewDetails()" name="bloodGroup" placeholder="Blood Group" >
-    </p>
-    <p>
-      <input type="text" formControlName="location" (keyup)="sendPreviewDetails()" name="location" placeholder="location" >
-    </p>
-    <p>
-      <input type="submit" id="login" value="Login" (keyup)="sendPreviewDetails()" (click)="addId()">
-    </p>
-  </form>
-  <div id="create-account-wrap">
-    <p>Not a member? <a href="#">Create Account</a><p>
-  </div><!--create-account-wrap-->
-</div><!--login-form-wrap-->
-
+  <div class="clr-row">
+    <div class="clr-col-lg-12 clr-col-12">
+       <form [formGroup]="addIdCardForm" clrForm>
+      <p>
+        <input  type="text" formControlName="fullname" autocomplete="off" (keyup)="sendPreviewDetails()" name="fullname" placeholder="Full Name" >
+      </p>
+      <p>
+        <input  type="text" formControlName="age" autocomplete="off" (keyup)="sendPreviewDetails()" name="age" placeholder="age" >
+      </p>
+      <p>
+        <input type="text" formControlName="bloodGroup" autocomplete="off" (keyup)="sendPreviewDetails()" name="bloodGroup" placeholder="Blood Group" >
+      </p>
+      <p>
+        <input type="text" formControlName="location" autocomplete="off" (keyup)="sendPreviewDetails()" name="location" placeholder="location" >
+      </p>
+      <p>
+        <button [clrLoading]="validateBtnState" class="btn btn-info-outline" (click)="addId()">Validate</button>
+      </p>
+      </form>
+     </div>
+  </div>

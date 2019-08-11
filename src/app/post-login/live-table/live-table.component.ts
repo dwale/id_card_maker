@@ -13,6 +13,8 @@ import {Cards} from '../shared/interface/cards';
 export class LiveTableComponent implements OnInit {
   subscription: Subscription;
   cardsArray: Cards[];
+  openModal: boolean;
+  selectedCard: {};
 
   constructor(private postLogin: PostLoginService, private liveTable: LiveTableService ) {
     this.subscription = this.liveTable.getTableData().subscribe((data: Cards[]) => {
@@ -23,9 +25,19 @@ export class LiveTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.openModal = false;
   }
   removeCard(id) {
     this.postLogin.removeCard(id);
+  }
+  previewModal(cardDetails) {
+    console.log(cardDetails);
+    this.selectedCard = cardDetails;
+    this.openModal = true;
+  }
+  closeModal() {
+    this.selectedCard = {};
+    this.openModal = false;
   }
 
 }
