@@ -40,4 +40,15 @@ export class PostLoginService {
     this.addCardToStorage(cards);
     this.latestId ++;
   }
+
+  public removeCard(id) {
+    const cards = this.getCards();
+    cards.map((card) => {
+      if (card.id === id) {
+        cards.splice(id, 1);
+      }
+        });
+    this.addCardToStorage(cards);
+    this.liveTable.updateTable(cards);
+  }
 }

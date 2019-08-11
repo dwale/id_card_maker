@@ -1,20 +1,30 @@
-<div id="login-form-wrap">
-  <h2>Login</h2>
-  <form [formGroup]="signUp">
-    <p>
-      <input type="text"  formControlName="fullname" name="fullName" placeholder="FullName" >
-    </p>
-    <p>
-      <input type="email" formControlName="email" name="email" placeholder="Email Address" >
-    </p>
-    <p>
-      <input type="password" formControlName="password" name="password" placeholder="password" >
-    </p>
-    <p>
-      <input type="submit" id="login" value="Login" (click)="addNewUser()">
-    </p>
+<div class="login-wrapper">
+  <form class="login" [formGroup]="signUp">
+    <section class="title">
+      <h3 class="welcome">Welcome to</h3>
+      Hobeii's ID Card Maker
+      <h5 class="hint">Sign in with your registered credentials to begin</h5>
+    </section>
+    <div class="login-group">
+      <clr-input-container>
+        <label class="clr-sr-only" for="f_name">Full Name</label>
+        <input type="text" id = "f_name" name="fullname" clrInput  formControlName="fullname"/>
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-sr-only">Email</label>
+        <input type="email" name="email" clrInput  formControlName="email"/>
+      </clr-input-container>
+      <clr-password-container>
+        <label class="clr-sr-only">Password</label>
+        <input type="password" name="password" clrPassword  formControlName="password"/>
+      </clr-password-container>
+      <div class="error" [ngClass]="{'active': isError}" >
+        Invalid user name or password
+      </div>
+      <button type="submit" (click)="addNewUser()" class="btn btn-primary">CREATE ACCOUNT</button>
+      <div class="lower_text">
+        <a >Already registered? Sign In</a>
+      </div>
+    </div>
   </form>
-  <div id="create-account-wrap">
-    <p>Not a member? <a href="#">Create Account</a><p>
-  </div><!--create-account-wrap-->
-</div><!--login-form-wrap-->
+</div>

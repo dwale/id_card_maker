@@ -8,6 +8,8 @@ import {RouterModule} from '@angular/router';
 import { AddIdCardComponent } from './add-id-card/add-id-card.component';
 import { IdLivePreviewComponent } from './id-live-preview/id-live-preview.component';
 import { LiveTableComponent } from './live-table/live-table.component';
+import {ClarityModule} from '@clr/angular';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [UserLayoutComponent, AddIdCardComponent, IdLivePreviewComponent, LiveTableComponent],
@@ -16,7 +18,8 @@ import { LiveTableComponent } from './live-table/live-table.component';
     FormsModule,
     ReactiveFormsModule,
     PostLoginRoutingModule,
-    RouterModule
+    RouterModule,
+    ClarityModule
   ],
   providers: [PostLoginService]
 })

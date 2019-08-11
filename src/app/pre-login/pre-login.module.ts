@@ -6,6 +6,8 @@ import {PreLoginRoutingModule} from './pre-login-routing.module';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PreLoginService} from './shared/services/pre-login.service';
+import {ClarityModule} from '@clr/angular';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [SignInComponent, SignUpComponent],
@@ -14,7 +16,8 @@ import {PreLoginService} from './shared/services/pre-login.service';
     PreLoginRoutingModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClarityModule
   ],
   providers: [PreLoginService],
 

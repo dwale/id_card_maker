@@ -24,5 +24,8 @@ export class LiveTableComponent implements OnInit {
 
   ngOnInit() {
   }
+  removeCard(id) {
+    this.postLogin.removeCard(id);
+  }
 
 }
