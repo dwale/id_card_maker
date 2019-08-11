@@ -5,7 +5,7 @@
         <div class="dp-arc-inner"></div>
         <img src="https://via.placeholder.com/420x420">
       </div>
-      <div class="desc">
+      <div class="desc" *ngIf="idDetails">
         <h1>{{idDetails.fullname}}</h1>
         <p>Age: {{idDetails.age}}</p>
         <p>Blood Group: {{idDetails.bloodGroup}}</p>

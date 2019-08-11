@@ -16,7 +16,8 @@ export class PreLoginService {
     } else {
       const lastId = users[users.length - 1].id;
       this.latestId = lastId + 1;
-    }  }
+    }
+  }
 
   private addUserToStorage(newUser: NewUser[]): void {
   localStorage.setItem('users', JSON.stringify({users: newUser}));

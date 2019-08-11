@@ -1,30 +1,40 @@
 import { Injectable } from '@angular/core';
-import {NewId} from '../interface/new-id';
 import {Observable, Subject} from 'rxjs';
+import {Cards} from '../interface/cards';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostLoginService {
-  private subject = new Subject<any>();
+  private cards: Cards[];
+  private latestId: number;
 
-  updatePreview(data: NewId) {
-    console.log('sending to preview from service', data);
-    this.subject.next(data);
+  constructor() {
+    const cards = this.getCards();
+    if (cards.length === 0) {
+      this.latestId = 0;
+    } else {
+      const lastId = cards[cards.length - 1].id;
+      this.latestId = lastId + 1;
+    }
   }
 
-  clearPreview() {
-    this.subject.next();
+
+  public  getCards(): Cards[] {
+    const storedCards = JSON.parse(localStorage.getItem('cards'));
+    return storedCards == null ? [] : storedCards.cards;
   }
 
-  getPreviewData(): Observable<any> {
-    return this.subject.asObservable();
+  private addCardToStorage(newCard: Cards[]): void {
+    localStorage.setItem('cards', JSON.stringify({cards: newCard}));
   }
 
-  constructor() { }
-
-
-  addNewId(idDetails: NewId) {
-
+  public addCard(card: Cards) {
+    card.id = this.latestId;
+    console.log(card);
+    const cards = this.getCards();
+    cards.push(card);
+    this.addCardToStorage(cards);
+    this.latestId ++;
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {PostLoginService} from '../shared/services/post-login.service';
+import {IdCardPreviewService} from '../shared/services/id-card-preview.service';
 
 @Component({
   selector: 'app-add-id-card',
@@ -12,7 +13,7 @@ export class AddIdCardComponent implements OnInit {
   addIdCardForm: FormGroup;
 
 
-  constructor(private formBuilder: FormBuilder, private postLogin: PostLoginService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private postLogin: PostLoginService, private cardPreview: IdCardPreviewService, private router: Router) {
   }
   ngOnInit() {
     this.initializeForm();
@@ -27,13 +28,14 @@ export class AddIdCardComponent implements OnInit {
     });
   }
 
-  // addId() {
-  //   this.postLogin.addNewId(this.addIdCardForm.value);
-  // }
+  addId() {
+    this.postLogin.addCard(this.addIdCardForm.value);
+    this.addIdCardForm.reset();
+  }
 
   sendPreviewDetails(): void {
     console.log('sending to service', this.addIdCardForm.value);
-    this.postLogin.updatePreview(this.addIdCardForm.value);
+    this.cardPreview.updatePreview(this.addIdCardForm.value);
   }
 
 }

@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PostLoginService} from '../shared/services/post-login.service';
 import {Subscription} from 'rxjs';
 import {NewId} from '../shared/interface/new-id';
+import {IdCardPreviewService} from '../shared/services/id-card-preview.service';
 
 @Component({
   selector: 'app-id-live-preview',
@@ -11,8 +12,8 @@ import {NewId} from '../shared/interface/new-id';
 export class IdLivePreviewComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   idDetails:  NewId;
-  constructor(private postLogin: PostLoginService) {
-    this.subscription = this.postLogin.getPreviewData().subscribe((data: NewId) => {
+  constructor(private postLogin: PostLoginService, private cardPreview: IdCardPreviewService) {
+    this.subscription = this.cardPreview.getPreviewData().subscribe((data: NewId) => {
       console.log('data gotten from service', data);
       this.idDetails = data;
       console.log(data, 'data', this.idDetails);

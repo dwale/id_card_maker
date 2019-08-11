@@ -7,9 +7,10 @@ import {PostLoginRoutingModule} from './post-login-routing.module';
 import {RouterModule} from '@angular/router';
 import { AddIdCardComponent } from './add-id-card/add-id-card.component';
 import { IdLivePreviewComponent } from './id-live-preview/id-live-preview.component';
+import { LiveTableComponent } from './live-table/live-table.component';
 
 @NgModule({
-  declarations: [UserLayoutComponent, AddIdCardComponent, IdLivePreviewComponent],
+  declarations: [UserLayoutComponent, AddIdCardComponent, IdLivePreviewComponent, LiveTableComponent],
   imports: [
     CommonModule,
     FormsModule,
