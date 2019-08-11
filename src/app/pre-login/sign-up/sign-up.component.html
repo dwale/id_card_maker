@@ -1,18 +1,17 @@
 <div class="login-wrapper">
   <form class="login" [formGroup]="signUp">
     <section class="title">
-      <h3 class="welcome">Welcome to</h3>
       Hobeii's ID Card Maker
       <h5 class="hint">Sign in with your registered credentials to begin</h5>
     </section>
     <div class="login-group">
       <clr-input-container>
         <label class="clr-sr-only" for="f_name">Full Name</label>
-        <input type="text" id = "f_name" name="fullname" clrInput  formControlName="fullname"/>
+        <input type="text" id = "f_name" name="fullname" clrInput autocomplete="off" formControlName="fullname"/>
       </clr-input-container>
       <clr-input-container>
         <label class="clr-sr-only">Email</label>
-        <input type="email" name="email" clrInput  formControlName="email"/>
+        <input type="email" name="email" clrInput autocomplete="off" formControlName="email"/>
       </clr-input-container>
       <clr-password-container>
         <label class="clr-sr-only">Password</label>

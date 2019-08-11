@@ -9,3 +9,29 @@
   background: url(app/pre-login/shared/images/1500x500.jpg) black no-repeat ;
   background-size: cover;
 }
+//.login-wrapper .login {
+//  background: #f9b230;
+//}
+.btn-primary, .btn-primary:focus, .btn-primary:active {
+  background: #f9b230!important;
+  border: 1px #f9b230 solid!important;
+  outline: none;
+  background: none;
+  transition: ease-in-out 0.3s;
+}
+.btn-primary:hover {
+  opacity: 0.9!important;
+}
+.clr-input-group .clr-input-group-icon-action {
+  color: #f9b230!important;
+  outline: none;
+}
+.clr-input:not([readonly]):focus, input[type=text]:not([readonly]):focus, input[type=password]:not([readonly]):focus {
+  border-bottom-color: #3c991e!important;
+}
+.clr-input-group:focus {
+  border-bottom-color: #3c991e!important;
+}
+.input-group:focus{
+  border-bottom: 1px solid #3c991e!important;
+}

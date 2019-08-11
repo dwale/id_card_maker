@@ -8,9 +8,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PreLoginService} from './shared/services/pre-login.service';
 import {ClarityModule} from '@clr/angular';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PreLoginLayoutComponent } from './pre-login-layout/pre-login-layout.component';
 
 @NgModule({
-  declarations: [SignInComponent, SignUpComponent],
+  declarations: [SignInComponent, SignUpComponent, PreLoginLayoutComponent],
   imports: [
     CommonModule,
     PreLoginRoutingModule,
