@@ -1,3 +1,22 @@
-<p>
-  live-table works!
-</p>
+<table class="zui-table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Blood Group</th>
+    <th>Location</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let cards of cardsArray">
+    <td>{{cards.fullname}}</td>
+    <td>{{cards.age}}</td>
+    <td>{{cards.bloodGroup}}</td>
+    <td>{{cards.location}}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+<br>
+{{cardsArray.length}}

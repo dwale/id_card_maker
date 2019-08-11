@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {Cards} from '../interface/cards';
+import {LiveTableService} from './live-table.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class PostLoginService {
   private cards: Cards[];
   private latestId: number;
 
-  constructor() {
+  constructor(private liveTable: LiveTableService) {
     const cards = this.getCards();
     if (cards.length === 0) {
       this.latestId = 0;
@@ -26,7 +27,9 @@ export class PostLoginService {
   }
 
   private addCardToStorage(newCard: Cards[]): void {
+    this.liveTable.updateTable(newCard);
     localStorage.setItem('cards', JSON.stringify({cards: newCard}));
+
   }
 
   public addCard(card: Cards) {

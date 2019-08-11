@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {PostLoginService} from '../shared/services/post-login.service';
 import {IdCardPreviewService} from '../shared/services/id-card-preview.service';
+import {LiveTableService} from '../shared/services/live-table.service';
 
 @Component({
   selector: 'app-add-id-card',
@@ -13,7 +14,9 @@ export class AddIdCardComponent implements OnInit {
   addIdCardForm: FormGroup;
 
 
-  constructor(private formBuilder: FormBuilder, private postLogin: PostLoginService, private cardPreview: IdCardPreviewService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private postLogin: PostLoginService,
+              private cardPreview: IdCardPreviewService, private liveTable: LiveTableService,
+              private router: Router) {
   }
   ngOnInit() {
     this.initializeForm();
