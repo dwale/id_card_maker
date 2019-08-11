@@ -1,0 +1,18 @@
+<div id="login-form-wrap">
+  <h2>Login</h2>
+  <form [formGroup]="signIn">
+    <p>
+      <input type="email" formControlName="email" name="email" placeholder="Email Address" >
+    </p>
+    <p>
+      <input type="password" formControlName="password" name="password" placeholder="password" >
+    </p>
+    <p>
+      <input type="submit" id="login" value="Login" (click)="logIn()">
+    </p>
+  </form>
+  <div id="create-account-wrap">
+    <p>Not a member? <a href="#">Create Account</a><p>
+  </div><!--create-account-wrap-->
+</div><!--login-form-wrap-->
+
