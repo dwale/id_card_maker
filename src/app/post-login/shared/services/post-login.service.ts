@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
 import {Cards} from '../interface/cards';
 import {LiveTableService} from './live-table.service';
 
@@ -13,7 +12,7 @@ export class PostLoginService {
   constructor(private liveTable: LiveTableService) {
     const cards = this.getCards();
     if (cards.length === 0) {
-      this.latestId = 0;
+      this.latestId = 1;
     } else {
       const lastId = cards[cards.length - 1].id;
       this.latestId = lastId + 1;
@@ -34,23 +33,30 @@ export class PostLoginService {
 
   public addCard(card: Cards) {
     card.id = this.latestId;
-    console.log(card);
     const cards = this.getCards();
     cards.push(card);
     this.addCardToStorage(cards);
     this.latestId ++;
   }
+
+  /**
+   * Gets user in session populates it in the header
+   */
   public getCurrentUser() {
     return JSON.parse(sessionStorage.getItem('Current User'));
   }
+
+  /**
+   * Removes the selected card from the array and updates the local storage
+   */
   public removeCard(id) {
     const cards = this.getCards();
-    cards.map((card) => {
-      if (card.id === id) {
-        cards.splice(id, 1);
-      }
-        });
+    console.log(id, 'as');
+    const index = cards.map(card => {
+      return card.id;
+    }).indexOf(id);
+    cards.splice(index, 1);
+    console.log(cards, 'after delete');
     this.addCardToStorage(cards);
-    this.liveTable.updateTable(cards);
   }
 }

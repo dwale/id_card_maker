@@ -9,10 +9,12 @@ export class IdCardPreviewService {
   private subject = new Subject<any>();
 
   updatePreview(data: NewId) {
-    console.log('sending to preview from service', data);
     this.subject.next(data);
   }
 
+  /**
+   * Removes the current state array subscribed to
+   */
   clearPreview() {
     this.subject.next();
   }
@@ -22,9 +24,4 @@ export class IdCardPreviewService {
   }
 
   constructor() { }
-
-
-  addNewId(idDetails: NewId) {
-
-  }
 }

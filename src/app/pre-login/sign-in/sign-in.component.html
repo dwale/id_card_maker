@@ -2,7 +2,7 @@
   <form class="login" [formGroup]="signIn">
     <section class="title">
       Hobeii's ID Card Maker
-      <h5 class="hint">Sign in with your registered credentials to begin</h5>
+      <h5 class="hint">Let's help you make an awesome ID Card!</h5>
     </section>
     <div class="login-group">
       <clr-input-container>
@@ -13,12 +13,12 @@
         <label class="clr-sr-only">Password</label>
         <input type="password" name="password" clrPassword  formControlName="password" autocomplete="off"/>
       </clr-password-container>
-      <div class="error" [ngClass]="{'active': isError}" [@enterAnimation]>
+      <div class="error" [ngClass]="{'active': isError}" >
         Invalid user name or password
       </div>
       <button type="submit" (click)="logIn()" class="btn btn-primary">Login</button>
       <div class="lower_text">
-      <a [routerLink]="['../sign-up']">Sign up for a Company ID</a>
+      <a [routerLink]="['../sign-up']">Not Registered? Sign up to use</a>
       </div>
     </div>
   </form>

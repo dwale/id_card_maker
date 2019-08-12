@@ -1,21 +1,29 @@
   <div class="clr-row">
     <div class="clr-col-lg-12 clr-col-12">
-       <form [formGroup]="addIdCardForm" clrForm>
-      <p>
-        <input  type="text" formControlName="fullname" autocomplete="off" (keyup)="sendPreviewDetails()" name="fullname" placeholder="Full Name" >
-      </p>
-      <p>
-        <input  type="text" formControlName="age" autocomplete="off" (keyup)="sendPreviewDetails()" name="age" placeholder="age" >
-      </p>
-      <p>
-        <input type="text" formControlName="bloodGroup" autocomplete="off" (keyup)="sendPreviewDetails()" name="bloodGroup" placeholder="Blood Group" >
-      </p>
-      <p>
-        <input type="text" formControlName="location" autocomplete="off" (keyup)="sendPreviewDetails()" name="location" placeholder="location" >
-      </p>
-      <p>
-        <button [clrLoading]="validateBtnState" class="btn btn-info-outline" (click)="addId()">Validate</button>
-      </p>
-      </form>
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-title">Add New Card</h3>
+          <div class="card-text">
+            <form [formGroup]="addIdCardForm" clrForm>
+          <p>
+            <input  type="text" class="clr-col-lg12 "   formControlName="fullname" autocomplete="off" (keyup)="sendPreviewDetails()" name="fullname" placeholder="Full Name" >
+          </p>
+          <p>
+            <input  type="text" class="clr-col-lg12 " formControlName="age" autocomplete="off" (keyup)="sendPreviewDetails()" name="age" placeholder="Age" >
+          </p>
+          <p>
+            <input type="text" class="clr-col-lg12 " formControlName="bloodGroup" autocomplete="off" (keyup)="sendPreviewDetails()" name="bloodGroup" placeholder="Blood Group" >
+          </p>
+          <p>
+            <input type="text" class="clr-col-lg12 " formControlName="location" autocomplete="off" (keyup)="sendPreviewDetails()" name="location" placeholder="Location" >
+          </p>
+          <p>
+            <button  class="btn btn-info-outline" [disabled]="!addIdCardForm.valid"  (click)="addId()">ADD</button>
+          </p>
+          </form>
+
+          </div>
+        </div>
+      </div>
      </div>
   </div>

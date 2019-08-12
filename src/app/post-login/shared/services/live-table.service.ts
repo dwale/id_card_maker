@@ -1,19 +1,37 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {NewId} from '../interface/new-id';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Cards} from '../interface/cards';
+import {isNullOrUndefined} from 'util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LiveTableService {
-  cardsArray = JSON.parse(localStorage.getItem('cards')).cards;
+  /**
+   * this stores the current state of the cards in the local storage to be emitted by the Behavior Subject
+   */
+  cardsArray = this.checkCardsStorage();
+  /**
+   * i used the BehaviorSubject to render the current state of the cards Array in the local storage
+   */
   private subject = new BehaviorSubject<any>(this.cardsArray);
 
-  constructor() { }
+  constructor() {
+
+  }
+
+  /**
+   * Checks if there are existing cards in the storage
+   */
+  private checkCardsStorage() {
+    if (!isNullOrUndefined(localStorage.getItem('cards'))) {
+     return JSON.parse(localStorage.getItem('cards')).cards;
+    } else {
+      return [];
+    }
+  }
 
   updateTable(data: Cards[]) {
-    console.log('sending to table from service', data);
     this.subject.next(data);
   }
   getTableData(): Observable<any> {

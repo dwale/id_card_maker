@@ -19,6 +19,6 @@ export class UserLayoutComponent implements OnInit {
     this.getCurrentUser();
   }
   getCurrentUser() {
-    this.currentUser = this.postLogin.getCurrentUser()[0];
+    this.currentUser = this.postLogin.getCurrentUser();
   }
 }

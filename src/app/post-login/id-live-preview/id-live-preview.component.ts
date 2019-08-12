@@ -13,16 +13,20 @@ export class IdLivePreviewComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   idDetails:  NewId;
   constructor(private postLogin: PostLoginService, private cardPreview: IdCardPreviewService) {
+    /**
+     * Gets current state sent by the id live update service from the form
+     */
     this.subscription = this.cardPreview.getPreviewData().subscribe((data: NewId) => {
-      console.log('data gotten from service', data);
       this.idDetails = data;
-      console.log(data, 'data', this.idDetails);
     });
   }
 
   ngOnInit() {
   }
 
+  /**
+   * End Subscription to prevent memory leak
+   */
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

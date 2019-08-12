@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
 import {PostLoginService} from '../shared/services/post-login.service';
 import {IdCardPreviewService} from '../shared/services/id-card-preview.service';
-import {LiveTableService} from '../shared/services/live-table.service';
-import {ClrLoadingState} from '@clr/angular';
 
 @Component({
   selector: 'app-add-id-card',
@@ -13,16 +10,15 @@ import {ClrLoadingState} from '@clr/angular';
 })
 export class AddIdCardComponent implements OnInit {
   addIdCardForm: FormGroup;
-  validateBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
 
 
   constructor(private formBuilder: FormBuilder, private postLogin: PostLoginService,
-              private cardPreview: IdCardPreviewService, private liveTable: LiveTableService,
-              private router: Router) {
+              private cardPreview: IdCardPreviewService) {
+    this.initializeForm();
+
   }
   ngOnInit() {
-    this.initializeForm();
   }
 
   initializeForm() {
@@ -35,16 +31,16 @@ export class AddIdCardComponent implements OnInit {
   }
 
   addId() {
-    this.validateBtnState = ClrLoadingState.LOADING;
     this.postLogin.addCard(this.addIdCardForm.value);
     this.addIdCardForm.reset();
     this.cardPreview.clearPreview();
-    this.validateBtnState = ClrLoadingState.SUCCESS;
 
   }
 
+  /**
+   * Triggers the rendering of the current state of the form
+   */
   sendPreviewDetails(): void {
-    console.log('sending to service', this.addIdCardForm.value);
     this.cardPreview.updatePreview(this.addIdCardForm.value);
   }
 

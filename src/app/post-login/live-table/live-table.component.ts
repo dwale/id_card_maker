@@ -4,6 +4,7 @@ import {PostLoginService} from '../shared/services/post-login.service';
 import {LiveTableService} from '../shared/services/live-table.service';
 import {Subscription} from 'rxjs';
 import {Cards} from '../shared/interface/cards';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-live-table',
@@ -15,12 +16,12 @@ export class LiveTableComponent implements OnInit {
   cardsArray: Cards[];
   openModal: boolean;
   selectedCard: {};
+  noCards: boolean;
 
   constructor(private postLogin: PostLoginService, private liveTable: LiveTableService ) {
     this.subscription = this.liveTable.getTableData().subscribe((data: Cards[]) => {
-      console.log('data gotten from service', data);
       this.cardsArray = data;
-      console.log(data, 'From Table', this.cardsArray);
+      this.noCards = isNullOrUndefined(this.cardsArray) || this.cardsArray.length === 0;
     });
   }
 
