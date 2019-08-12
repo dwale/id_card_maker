@@ -17,7 +17,7 @@
         <label class="clr-sr-only">Password</label>
         <input type="password" name="password" clrPassword  formControlName="password"/>
       </clr-password-container>
-      <div class="error" [ngClass]="{'active': isError}" >
+      <div class="error" >
         Invalid user name or password
       </div>
       <button type="submit" (click)="addNewUser()" class="btn btn-primary" [disabled]="!signUp.valid" >CREATE ACCOUNT</button>

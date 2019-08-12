@@ -33,13 +33,11 @@ export class SignInComponent implements OnInit {
     console.log(this.prelogin.validateLogin(this.signIn.value));
     if (this.prelogin.validateLogin(this.signIn.value)) {
       this.router.navigate(['../../../user']);
-      console.log('true');
     } else {
       this.isError = true;
       setTimeout(() => {
         this.isError = false;
       }, 3000);
-      console.log('false');
 
     }
   }

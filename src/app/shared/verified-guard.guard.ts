@@ -15,6 +15,7 @@ export class VerifiedGuardGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (isNullOrUndefined(sessionStorage.getItem('Current User'))) {
+      this.router.navigate(['../../sign-in']);
       return;
     } else {
       return true;
