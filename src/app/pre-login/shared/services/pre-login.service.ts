@@ -66,7 +66,7 @@ export class PreLoginService {
   }
 
   /**
-   * Vialidates the entered credentials with the one in the local Storage
+   * Validates the entered credentials with the one in the local Storage
    *
    */
   public validateLogin(userLogin: UserLogin) {
